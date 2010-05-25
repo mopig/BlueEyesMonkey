@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">Obey the Monkey</string>
-	<string name="obeyButtonLabel">Obey!</string>
-	<string name="listenButtonLabel">Listen!</string>
+	<string name="obeyButtonLabel">Obey to the Monkey!</string>
+	<string name="listenButtonLabel">Listen to him!</string>
 </resources>

@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res/com.fr4gus.android.blueeyesmonkey"
-	android:orientation="horizontal" android:layout_gravity="center_vertical|center_horizontal"
+	android:orientation="vertical" android:layout_gravity="center_vertical|center_horizontal"
 	android:layout_height="fill_parent" android:layout_width="fill_parent">
 	<com.admob.android.ads.AdView android:id="@+id/ad"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		app:backgroundColor="#000000" app:primaryTextColor="#FFFFFF"
 		app:secondaryTextColor="#CCCCCC" app:refreshInterval="15"
 		app:keywords="Android Silly Application" />
-	<ImageView android:id="@+id/ImageMonkey"
+	<LinearLayout android:id="@+id/contentLayout"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:src="@drawable/monkey_inactive" android:baselineAlignBottom="true"
-		android:layout_gravity="center_vertical|center_horizontal"></ImageView>
-	<LinearLayout android:id="@+id/ButtonsLayout"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:orientation="vertical" android:layout_gravity="center_vertical|center_horizontal">
-		<Button android:id="@+id/ObeyButton" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="@string/obeyButtonLabel"
-			android:gravity="center_horizontal|center_vertical"
-			android:textColor="#FFFFFF" android:layout_gravity="center_vertical|center_horizontal"></Button>
-		<Button android:id="@+id/ListenButton" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="@string/listenButtonLabel"
-			android:textColor="#FFFFFF" android:typeface="normal"
-			android:layout_gravity="center_vertical|center_horizontal"></Button>
-	</LinearLayout>
+		android:orientation="horizontal" android:layout_gravity="right|center_vertical">
+		<ImageView android:id="@+id/ImageMonkey"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:src="@drawable/monkey_inactive" android:layout_gravity="center_horizontal|center_vertical"></ImageView>
+		<LinearLayout android:id="@+id/ButtonsLayout"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:orientation="vertical" android:layout_gravity="right|center_vertical">
+			<Button android:id="@+id/ObeyButton" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:text="@string/obeyButtonLabel"
+				android:gravity="center_horizontal|center_vertical"
+				android:textColor="#FFFFFF" android:layout_gravity="center_vertical|center_horizontal"
+				android:background="@drawable/button_states"></Button>
+			<Button android:id="@+id/ListenButton" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:text="@string/listenButtonLabel"
+				android:textColor="#FFFFFF" android:typeface="normal"
+				android:layout_gravity="center_vertical|center_horizontal"
+				android:background="@drawable/button_states"></Button>
+		</LinearLayout>
 
+	</LinearLayout>
 </LinearLayout>

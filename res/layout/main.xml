@@ -16,15 +16,13 @@
 
 
 	<LinearLayout android:id="@+id/ButtonsLayout"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:gravity="center_horizontal|center_vertical" android:layout_gravity="center_horizontal"
-		android:orientation="horizontal">
-		<Button android:id="@+id/ObeyButton" android:layout_width="wrap_content"
+		android:layout_width="fill_parent" android:orientation="vertical" android:layout_height="wrap_content" android:layout_gravity="bottom|center_horizontal">
+		<Button android:id="@+id/ObeyButton" android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:text="@string/obeyButtonLabel"
-			android:gravity="center_horizontal|center_vertical"></Button>
-		<Button android:id="@+id/ListenButton" android:layout_width="wrap_content"
+			android:gravity="center_horizontal|center_vertical" android:background="@drawable/button_states" android:textColor="#FFFFFF"></Button>
+		<Button android:id="@+id/ListenButton" android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:text="@string/listenButtonLabel"
-			android:typeface="normal"></Button>
+			android:typeface="normal" android:textColor="#FFFFFF" android:background="@drawable/button_states"></Button>
 	</LinearLayout>
 
 

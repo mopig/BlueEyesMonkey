@@ -60,6 +60,9 @@ containing a value of this type.
         public static final int inactive=0x7f020003;
         public static final int monkey_active=0x7f020004;
         public static final int monkey_inactive=0x7f020005;
+        public static final int test=0x7f020006;
+        public static final int tinybutton_black=0x7f020007;
+        public static final int tinybutton_blue=0x7f020008;
     }
     public static final class id {
         public static final int ButtonsLayout=0x7f060002;
@@ -67,6 +70,7 @@ containing a value of this type.
         public static final int ListenButton=0x7f060004;
         public static final int ObeyButton=0x7f060003;
         public static final int ad=0x7f060000;
+        public static final int contentLayout=0x7f060005;
     }
     public static final class layout {
         public static final int main=0x7f030000;

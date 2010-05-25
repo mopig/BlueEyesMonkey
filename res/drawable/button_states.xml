@@ -1,5 +1,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-	<item android:state_selected="true" android:drawable="@drawable/inactive" />
-	<item android:state_pressed="true" android:drawable="@drawable/active" />
-	<item android:drawable="@drawable/inactive" />
+	<item android:state_selected="true" android:drawable="@drawable/tinybutton_blue" />
+	<item android:state_focused="true" android:drawable="@drawable/tinybutton_blue" />
+	<item android:state_pressed="true" android:drawable="@drawable/tinybutton_blue" />
+	<item android:drawable="@drawable/tinybutton_black" />
 </selector>

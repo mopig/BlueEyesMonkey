@@ -6,71 +6,120 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import com.admob.android.ads.AdManager;
 
-public class Monkey extends Activity implements OnTouchListener {
+public class Monkey extends Activity implements OnTouchListener,
+    OnClickListener, OnKeyListener{
 
-    /** Called when the activity is first created. */
+  /** Called when the activity is first created. */
 
-    MediaPlayer obeyMp;
+  private MediaPlayer obeyMp;
 
-    MediaPlayer listenMp;
+  private MediaPlayer listenMp;
 
-    ImageView monkey;
+  private ImageView monkey;
 
-    Drawable monkeyActive;
+  private Drawable monkeyActive;
 
-    Drawable monkeyInactive;
+  private Drawable monkeyInactive;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+  private boolean playerActive = false;
 
-        AdManager.setTestDevices(new String[] { AdManager.TEST_EMULATOR });
+  private Button obeyButton;
 
-        Context context = getBaseContext();
-        obeyMp = MediaPlayer.create(context, R.raw.obey);
-        obeyMp.setLooping(true);
+  private Button listenButton;
 
-        listenMp = MediaPlayer.create(context, R.raw.monkey);
-        listenMp.setLooping(true);
+  @Override
+  public void onCreate(Bundle savedInstanceState){
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main);
 
-        Button obeyButton = (Button) findViewById(R.id.ObeyButton);
-        Button listenButton = (Button) findViewById(R.id.ListenButton);
-        monkey = (ImageView) findViewById(R.id.ImageMonkey);
+    AdManager.setTestDevices(new String[] {
+      AdManager.TEST_EMULATOR
+    });
 
-        Resources resources = getResources();
-        monkeyActive = resources.getDrawable(R.drawable.monkey_active);
-        monkeyInactive = resources.getDrawable(R.drawable.monkey_inactive);
+    Context context = getBaseContext();
+    obeyMp = MediaPlayer.create(context, R.raw.obey);
+    obeyMp.setLooping(true);
 
-        obeyButton.setOnTouchListener(this);
-        listenButton.setOnTouchListener(this);
+    listenMp = MediaPlayer.create(context, R.raw.monkey);
+    listenMp.setLooping(true);
+
+    obeyButton = (Button)findViewById(R.id.ObeyButton);
+    listenButton = (Button)findViewById(R.id.ListenButton);
+    monkey = (ImageView)findViewById(R.id.ImageMonkey);
+
+    Resources resources = getResources();
+    monkeyActive = resources.getDrawable(R.drawable.monkey_active);
+    monkeyInactive = resources.getDrawable(R.drawable.monkey_inactive);
+
+    obeyButton.setOnTouchListener(this);
+    obeyButton.setOnKeyListener(this);
+    obeyButton.setOnClickListener(this);
+
+    listenButton.setOnTouchListener(this);
+    listenButton.setOnKeyListener(this);
+    listenButton.setOnClickListener(this);
+  }
+
+  @Override
+  public boolean onTouch(View v, MotionEvent event){
+    int action = event.getAction();
+    handleMotionEvent(v, action);
+    return true;
+  }
+
+  @Override
+  public void onClick(View v){
+    handleMotionEvent(v, MotionEvent.ACTION_DOWN);
+  }
+
+  @Override
+  public boolean onKey(View v, int keyCode, KeyEvent event){
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  @Override
+  protected void onDestroy(){
+    obeyMp.stop();
+    listenMp.stop();
+    super.onDestroy();
+  }
+
+  private void handleMotionEvent(View v, int action){
+    MediaPlayer player = null;
+    Button buttonToDisable = null;
+    if(v.getId() == R.id.ObeyButton){
+      player = obeyMp;
+      buttonToDisable = listenButton;
+    }else if(v.getId() == R.id.ListenButton){
+      player = listenMp;
+      buttonToDisable = obeyButton;
     }
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        MediaPlayer player = null;
-        if (v.getId() == R.id.ObeyButton) {
-            player = obeyMp;
-        } else if (v.getId() == R.id.ListenButton) {
-            player = listenMp;
-        }
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            monkey.setImageDrawable(monkeyActive);
-            player.start();
-        } else if (event.getAction() == MotionEvent.ACTION_UP) {
-            monkey.setImageDrawable(monkeyInactive);
-            player.pause();
-            player.seekTo(0);
-        }
-        return false;
+    if(action == MotionEvent.ACTION_DOWN){
+      if(playerActive){
+        monkey.setImageDrawable(monkeyInactive);
+        player.pause();
+        player.seekTo(0);
+        buttonToDisable.setEnabled(true);
+      }else{
+        monkey.setImageDrawable(monkeyActive);
+        player.start();
+        buttonToDisable.setEnabled(false);
+      }
+      playerActive = !playerActive;
     }
+  }
 
 }
