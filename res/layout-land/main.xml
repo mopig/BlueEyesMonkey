@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res/com.fr4gus.android.blueeyesmonkey"
 	android:orientation="horizontal" android:layout_gravity="center_vertical|center_horizontal"
-	android:layout_height="wrap_content" android:layout_width="wrap_content">
+	android:layout_height="fill_parent" android:layout_width="fill_parent">
 	<com.admob.android.ads.AdView android:id="@+id/ad"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		app:backgroundColor="#000000" app:primaryTextColor="#FFFFFF"
@@ -12,21 +12,17 @@
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:src="@drawable/monkey_inactive" android:baselineAlignBottom="true"
 		android:layout_gravity="center_vertical|center_horizontal"></ImageView>
-
-
 	<LinearLayout android:id="@+id/ButtonsLayout"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		android:orientation="vertical" android:layout_gravity="center_vertical|center_horizontal">
 		<Button android:id="@+id/ObeyButton" android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:text="@string/obeyButtonLabel"
-			android:gravity="center_horizontal" android:textColor="#FFFFFF"
-			android:layout_gravity="center_vertical|center_horizontal"
-			android:background="@drawable/button_states"></Button>
+			android:gravity="center_horizontal|center_vertical"
+			android:textColor="#FFFFFF" android:layout_gravity="center_vertical|center_horizontal"></Button>
 		<Button android:id="@+id/ListenButton" android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:text="@string/listenButtonLabel"
 			android:textColor="#FFFFFF" android:typeface="normal"
-			android:layout_gravity="center_vertical|center_horizontal"
-			android:background="@drawable/button_states"></Button>
+			android:layout_gravity="center_vertical|center_horizontal"></Button>
 	</LinearLayout>
 
 </LinearLayout>
