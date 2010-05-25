@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Obey the Monkey</string>
-	<string name="obeyButtonLabel">Obey to the Monkey!</string>
+	<string name="app_name">Obey the Blue Eyes Monkey</string>
+	<string name="obeyButtonLabel">Obey the Monkey!</string>
 	<string name="listenButtonLabel">Listen to him!</string>
+	<string name="about">Development and Design by fr4gus \n
+		http://www.fr4gus.com \n twitter: @fr4gus.com</string>
 </resources>

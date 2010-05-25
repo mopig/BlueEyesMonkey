@@ -2,11 +2,15 @@ package com.fr4gus.android.blueeyesmonkey;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -43,11 +47,11 @@ public class Monkey extends Activity implements OnTouchListener,
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main);
 
-    AdManager.setTestDevices(new String[] {
-      AdManager.TEST_EMULATOR
-    });
+//    AdManager.setTestDevices(new String[] {
+//      AdManager.TEST_EMULATOR
+//    });
 
-    Context context = getBaseContext();
+    Context context = getApplicationContext();
     obeyMp = MediaPlayer.create(context, R.raw.obey);
     obeyMp.setLooping(true);
 
@@ -122,4 +126,21 @@ public class Monkey extends Activity implements OnTouchListener,
     }
   }
 
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu){
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.options_menu, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item){
+    switch(item.getItemId()){
+      case R.id.aboutMenuItem:
+        Intent intent = new Intent();
+        intent.setClass(this, AboutActivity.class);
+        startActivity(intent);
+    }
+    return true;
+  }
 }
