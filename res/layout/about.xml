@@ -1,0 +1,13 @@
+<FrameLayout android:id="@+id/AboutFrame"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:background="#CCCCCC">
+	<LinearLayout android:id="@+id/AboutLayout" android:layout_height="fill_parent" android:orientation="vertical" android:layout_width="fill_parent">
+		<ImageView android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/logoImage"
+			android:src="@drawable/fr4gus" android:layout_gravity="center_vertical|center_horizontal"></ImageView>
+		<TextView android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:id="@+id/AboutText"
+			android:text="@string/about" android:textColor="#000000" android:layout_gravity="center_horizontal" android:gravity="center"></TextView>
+	</LinearLayout>
+</FrameLayout>
